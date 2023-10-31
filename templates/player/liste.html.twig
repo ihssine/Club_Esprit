@@ -1,0 +1,39 @@
+<head>
+<style>
+table, th, td {
+   border: 1px solid black;
+  border-collapse: collapse;
+}
+</style>
+<h1>Liste</h1>
+</head>
+{% if response is not empty %}
+<table>
+        <thead>
+            <tr>
+                <th>Ref</th>
+                <th>Name</th>
+                <th>Surname</th>
+                <th>Stade</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+<tbody>
+{% for i in response %}
+<tr>
+					<td>{{ i.id}}</td></br>
+					<td>{{i.name}}</td></br>
+                    <td>{{ i.Surname}}</td></br>
+					<td>{{i.stade}}</td></br>
+			
+          <td> 
+          
+          <a href="{{ path('remove', {'id':i.id}) }}" class="button">remove</a>
+          <a href="{{ path('update' , {'id':i.id}) }}" class="button">update</a>
+          </td>
+</tr>
+{%endfor%}
+</tbody>
+</table>
+<a href="{{ path('add') }}" class="button">add</a>
+{%endif%}
